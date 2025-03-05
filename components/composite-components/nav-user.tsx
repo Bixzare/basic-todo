@@ -7,6 +7,7 @@ import {
   CreditCard,
   LogOut,
   Sparkles,
+  User,
 } from "lucide-react"
 
 import {
@@ -29,6 +30,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { ThemeToggle } from "./theme-changer"
 
 export function NavUser({
   user,
@@ -44,19 +46,26 @@ export function NavUser({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
+        <ThemeToggle/>
+      </SidebarMenuItem>
+      <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
+              {/* <Avatar className="h-8 w-8 rounded-lg">
+                <User/>
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
+              </Avatar> */}
+  <div className="flex aspect-square items-center justify-center rounded-lg ">
+                 <User className = "size-5"/>
+              </div>              
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate text-xs">{user.name == "Guest"? "" : user.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -109,6 +118,8 @@ export function NavUser({
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
+
+      
     </SidebarMenu>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import DashboardLayout from '@/components/composite-components/dashboard-layout';
+import DashboardLayout from '@/components/wrappers/dashboard-layout';
 export default function DashLayout({ children}: Readonly<{
   children: React.ReactNode;
 }>){
