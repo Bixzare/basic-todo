@@ -1,0 +1,36 @@
+# Query: SheetContent
+# ContextLines: 1
+
+8 results - 2 files
+
+basic-todo\components\ui\sheet.tsx:
+   51  
+   52: interface SheetContentProps
+   53    extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
+
+   55  
+   56: const SheetContent = React.forwardRef<
+   57    React.ElementRef<typeof SheetPrimitive.Content>,
+   58:   SheetContentProps
+   59  >(({ side = "right", className, children, ...props }, ref) => (
+
+   74  ))
+   75: SheetContent.displayName = SheetPrimitive.Content.displayName
+   76  
+
+  134    SheetClose,
+  135:   SheetContent,
+  136    SheetHeader,
+
+basic-todo\components\ui\sidebar.tsx:
+   12  import { Separator } from "@/components/ui/separator"
+   13: import { Sheet, SheetContent } from "@/components/ui/sheet"
+   14  import { Skeleton } from "@/components/ui/skeleton"
+
+  197          <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+  198:           <SheetContent
+  199              data-sidebar="sidebar"
+
+  209              <div className="flex h-full w-full flex-col">{children}</div>
+  210:           </SheetContent>
+  211          </Sheet>

@@ -9,12 +9,14 @@ export default function Home() {
       </div>
       <div className = "border-r-4 border-blue-700 h-40 p-2 hidden md:block"></div>
       <div className ="hover:bg-gradient p-1 text-black">
-        <div className ="bg-white flex w-full h-full justify-center items-center">
-          <Link href = "/dashboard">
-        <button className = " h-full w-full text-4xl hover:scale-105 font-extrabold drop-shadow-[35px_35px_35px_rgba(59,130,246,1)] p-8 rounded-full hover:text-gradient hover">Get Started</button>
+        <div className ="bg-background flex w-full h-full justify-center items-center">
+          <Link href = "/dashboard"> {/*middleware protects routes if unauthed */}
+        <button className = " h-full w-full text-4xl hover:scale-105 font-extrabold hover:drop-shadow-[35px_35px_35px_rgba(59,130,246,1)] p-8 rounded-full hover:text-gradient hover">Get Started</button>
         </Link>
         </div>
       </div>
+
+
 
     </div>
     <footer className="w-full  bg-gray-500/10 px-10 py-2 flex  items-center justif-evenly gap-5">

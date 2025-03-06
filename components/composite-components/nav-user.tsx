@@ -45,7 +45,7 @@ export function NavUser({
 
   return (
     <SidebarMenu>
-      <SidebarMenuItem>
+      <SidebarMenuItem className = "-ml-0.5">
         <ThemeToggle/>
       </SidebarMenuItem>
       <SidebarMenuItem>
@@ -55,14 +55,13 @@ export function NavUser({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              {/* <Avatar className="h-8 w-8 rounded-lg">
-                <User/>
+              <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar> */}
-  <div className="flex aspect-square items-center justify-center rounded-lg ">
+                <AvatarFallback className="rounded-lg">G</AvatarFallback>
+              </Avatar>
+  {/* <div className="flex aspect-square items-center justify-center rounded-lg ">
                  <User className = "size-5"/>
-              </div>              
+              </div>               */}
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>
                 <span className="truncate text-xs">{user.name == "Guest"? "" : user.email}</span>
@@ -84,7 +83,7 @@ export function NavUser({
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate text-xs">{user.name == "Guest"? "" : user.email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
