@@ -1,5 +1,6 @@
+"use server"
 import { Tasks } from "@/components/composite-components/task"
-export default function TasksPage(){
+export default async function TasksPage(){
     return (
         <div className = "flex items-center size-full flex-col space">
             <div className = "w-full p-1 px-1 mb-10">

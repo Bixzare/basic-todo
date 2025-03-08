@@ -13,10 +13,12 @@ export function CardGrid({ data }: { data: CardData }) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-2">
             {data.map((card, index) => (
-                <Card className="w-auto" key={index}>
+                <Card className="w-auto hover:scale-105" key={index}>
                     <CardHeader>
                         <CardTitle className="flex items-center">
-                            <Star className="inline mr-2 text-sidebar-accent" fill={"262 50% 58%"}/>
+                            <Star className="inline mr-2 text-sidebar-accent" 
+                            fill={"transparent"}
+                            />
                             {card.title}
                         </CardTitle>
                         <CardDescription>{card.description}</CardDescription>
