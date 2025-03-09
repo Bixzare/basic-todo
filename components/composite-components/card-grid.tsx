@@ -9,7 +9,10 @@ import {
 import { Star } from "lucide-react";
 import { Button } from "../ui/button";
 import { CardData } from "./card-data";
+import { useSettings } from "../wrappers/settings-provider";
 export function CardGrid({ data }: { data: CardData }) { 
+
+    const settings = useSettings();
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-2">
             {data.map((card, index) => (

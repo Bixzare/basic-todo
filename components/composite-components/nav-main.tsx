@@ -17,7 +17,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
-
+import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 export function NavMain({
@@ -42,13 +42,13 @@ export function NavMain({
         {items.map((item) => ( // write logic here for if its a non collapsible navitem display something else
         <SidebarMenuItem key = {item.title} className = "h-12">
             <SidebarMenuButton asChild isActive={item.url == pathname? true : false} className =" size-full rounded-lg text-md ">
-                <a href = {item.url} className = "size-full">
+                <Link href = {item.url} className = "size-full">
                 <div className ="flex aspect-square  items-center justify-center rounded-lg -ml-0.5">
                     {item.icon && <item.icon className ="size-5"/>}
 
                 </div>
 
-                <span>{item.title}</span></a>
+                <span>{item.title}</span></Link>
             </SidebarMenuButton>
         </SidebarMenuItem>
         ))}
