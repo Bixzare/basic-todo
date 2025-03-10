@@ -35,7 +35,7 @@ export function LayoutSettings() {
   // any but should be layoutStyle , don't feel like importing the type
 
   React.useEffect(()=>{
-    console.log(settings.layoutOrder)
+    console.log("settings comp : ",settings)
   },[settings])
 
   const layoutChange = (style: any) => {
@@ -108,7 +108,7 @@ export function LayoutSettings() {
       )}
               </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="date"><Clock size = {20} className = "mr-1"/>Status</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="Priority">
+            <DropdownMenuRadioItem value="priority">
               <Flag size = {20} className = "inline mr-1"/>Priority
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>

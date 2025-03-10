@@ -1,60 +1,67 @@
+// card-data.ts
 export const cardData = [
-    {
-      title: "Card 1",
-      description: "This is the first card.",
-      content: "Main content of card 1.",
-      footer: "Footer of card 1.",
-      status: "incomplete",
-      priority: "high",
-    },
-    {
-      title: "Card 2",
-      description: "This is the second card.",
-      content: "Main content of card 2.",
-      footer: "Footer of card 2.",
-      status: "complete",
-      priority: "med",
-    },
-    {
-      title: "Card 3",
-      description: "This is the third card.",
-      content: "Main content of card 3. This card can contain detailed information, links, or anything you wish to display.",
-      footer: "Footer of card 3.",
-      status: "incomplete",
-      priority: "low",
-    },
-    {
-      title: "Card 4",
-      description: "This is the fourth card.",
-      content: "Main content of card 4. More detailed content or links can be placed here.",
-      footer: "Footer of card 4.",
-      status: "complete",
-      priority: "high",
-    },
-    {
-      title: "Card 5",
-      description: "This is the fifth card.",
-      content: "Main content of card 5. You can also add additional buttons or links if needed.",
-      footer: "Footer of card 5.",
-      status: "complete",
-      priority: "med",
-    },
-    {
-      title: "Card 6",
-      description: "This is the sixth card.",
-      content: "Main content of card 6. Make it informative and engaging for your users.",
-      footer: "Footer of card 6.",
-      status: "complete",
-      priority: "low",
-    },
-  ];
+  {
+    title: "Zebra Card",
+    description: "This is a Z card - should appear last in A-Z.",
+    content: "Main content of Zebra card.",
+    footer: "Created 2023-01-15",
+    status: "incomplete",
+    priority: "3",
+    timestamp: "2023-01-15T10:30:00Z"
+  },
+  {
+    title: "Banana Card",
+    description: "This is a B card - should appear second in A-Z.",
+    content: "Main content of Banana card.",
+    footer: "Created 2023-04-22",
+    status: "complete",
+    priority: "2",
+    timestamp: "2023-04-22T14:15:00Z"
+  },
+  {
+    title: "Apple Card",
+    description: "This is an A card - should appear first in A-Z.",
+    content: "Main content of Apple card. This card can contain detailed information.",
+    footer: "Created 2023-06-10",
+    status: "incomplete",
+    priority: "1",
+    timestamp: "2023-06-10T09:45:00Z"
+  },
+  {
+    title: "Mango Card",
+    description: "This is an M card - should appear in the middle in A-Z.",
+    content: "Main content of Mango card. More detailed content here.",
+    footer: "Created 2022-11-05",
+    status: "complete",
+    priority: "3",
+    timestamp: "2022-11-05T16:20:00Z"
+  },
+  {
+    title: "Cherry Card",
+    description: "This is a C card - should appear third in A-Z.",
+    content: "Main content of Cherry card. You can add additional info here.",
+    footer: "Created 2022-08-17",
+    status: "complete",
+    priority: "2",
+    timestamp: "2022-08-17T11:10:00Z"
+  },
+  {
+    title: "Lemon Card",
+    description: "This is an L card - should appear in the middle in A-Z.",
+    content: "Main content of Lemon card. Make it informative and engaging.",
+    footer: "Created 2023-02-28",
+    status: "complete",
+    priority: "1",
+    timestamp: "2023-02-28T13:40:00Z"
+  },
+];
 
-  
-  export type CardData = { 
-    title: string; 
-    description: string; 
-    content: string; 
-    footer: string; 
-    status: string; 
-    priority: string; 
-  }[];
+export type CardData = { 
+  title: string; 
+  description: string; 
+  content: string; 
+  footer: string; 
+  status: string; 
+  priority: string;
+  timestamp: string; 
+}[];

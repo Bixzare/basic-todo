@@ -16,31 +16,22 @@ const STORAGE_KEY = "app_settings"
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const [settings, setSettings] = useState<Settings>(defaultSettings)
-  const [isLoaded, setIsLoaded] = useState(false)
 
   // Load settings from localStorage on mount
   useEffect(() => {
-    const loadSettings = () => {
-      try {
-        // Only run on client-side
-        if (typeof window !== "undefined") {
-          const savedSettings = localStorage.getItem(STORAGE_KEY)
-
-          if (savedSettings) {
-            const parsedSettings = JSON.parse(savedSettings)
-            setSettings({ ...defaultSettings, ...parsedSettings })
-          } else {
-            // Initialize localStorage with default settings if not present
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultSettings))
-          }
+    try {
+      if (typeof window !== "undefined") {
+        const savedSettings = localStorage.getItem(STORAGE_KEY)
+        if (savedSettings) {
+          const parsedSettings = JSON.parse(savedSettings)
+          setSettings(current => ({ ...current, ...parsedSettings }))
+        } else {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultSettings))
         }
-      } catch (error) {
-        console.error("Failed to load settings from localStorage:", error)
       }
-      setIsLoaded(true)
+    } catch (error) {
+      console.error("Failed to load settings from localStorage:", error)
     }
-
-    loadSettings()
   }, [])
 
   // Update settings
@@ -56,10 +47,10 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  // Don't render until settings are loaded from storage
-  if (!isLoaded) {
-    return null
-  }
+  // // Don't render until settings are loaded from storage
+  // if (!isLoaded) {
+  //   return null
+  // }
 
   return <SettingsContext.Provider value={{ settings, updateSettings }}>{children}</SettingsContext.Provider>
 }
