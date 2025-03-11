@@ -1,7 +1,7 @@
 import { Task } from "./schema";
 
 export const TaskData: Task[] = [
-    {
+    {   id: crypto.randomUUID(),
         title: "Finish Next.js Project",
         description: "Complete the dashboard and test API integration.",
         content: "Work on the dashboard UI and finalize API testing.",
@@ -21,7 +21,7 @@ export const TaskData: Task[] = [
         completedAt: null,
         category: "Development",
     },
-    {
+    {    id: crypto.randomUUID(),
         title: "Prepare Presentation",
         description: "Create slides for the upcoming AI workshop.",
         content: "Focus on real-world AI applications and case studies.",
@@ -41,7 +41,7 @@ export const TaskData: Task[] = [
         completedAt: null,
         category: "Work",
     },
-    {
+    {    id: crypto.randomUUID(),
         title: "Grocery Shopping",
         description: "Buy essentials for the week.",
         content: "Milk, eggs, vegetables, and snacks.",
@@ -61,7 +61,7 @@ export const TaskData: Task[] = [
         completedAt: "2025-03-15T16:30:00.000Z",
         category: "Personal",
     },
-    {
+    {    id: crypto.randomUUID(),
         title: "Write Blog Post",
         description: "Write an article on the latest trends in AI development.",
         content: "Discuss new tools and techniques in machine learning and AI.",
@@ -81,7 +81,7 @@ export const TaskData: Task[] = [
         completedAt: null,
         category: "Blog",
     },
-    {
+    {    id: crypto.randomUUID(),
         title: "Review Codebase",
         description: "Review pull requests and make necessary changes to improve the codebase.",
         content: "Ensure that all code follows best practices and is thoroughly tested.",
@@ -101,7 +101,7 @@ export const TaskData: Task[] = [
         completedAt: null,
         category: "Development",
     },
-    {
+    {    id: crypto.randomUUID(),
         title: "Book Doctor Appointment",
         description: "Schedule a check-up with the general physician.",
         content: "Ensure that the insurance is valid and request a health check-up.",
@@ -121,7 +121,7 @@ export const TaskData: Task[] = [
         completedAt: null,
         category: "Health",
     },
-    {
+    {    id: crypto.randomUUID(),
         title: "Update Resume",
         description: "Update the resume with recent projects and work experience.",
         content: "Add new job experience and remove outdated information.",

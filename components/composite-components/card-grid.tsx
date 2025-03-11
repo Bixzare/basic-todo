@@ -14,11 +14,27 @@ import { useSettings } from "../wrappers/settings-provider";
 import { sortCardData } from "@/lib/sortLayout";
 import clsx from "clsx";
 import { Task } from "@/types/schema";
+import { format } from 'date-fns';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose
+} from "@/components/ui/dialog"
+import DialogWrapper from "../wrappers/dialog-wrapper";
 
 export function CardGrid({ data }: { data: Task[] }) {
+  
   const { settings } = useSettings();
-  console.log(data);
   //console.log("tasks",settings) // problem not fixed , check claude to work through
+
+  const formatDate = (dateString: string) => {
+    return format(new Date(dateString), "H:mm M/dd "); // Example: 03/15 09:30
+  };
 
   React.useEffect(() => {
     console.log("Card component actually mounted");
@@ -28,10 +44,16 @@ export function CardGrid({ data }: { data: Task[] }) {
   React.useEffect(() => {});
   // const sortedData = React.useMemo(() => sortCardData(data, settings), [data, settings]);
   const sortedData = sortCardData(data, settings);
+
+  const updateTask = (card:Task) => {
+    console.log("updateTask",card)
+    
+  }
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-2">
       {sortedData.map((card, index) => (
-        <Card className="w-auto hover:scale-105 relative" key={index}>
+        <DialogWrapper data = {card}>
+        <Card className="w-auto hover:scale-105 relative hover:cursor-pointer" key={index} onClick ={() => updateTask(card)}>
           <div className=" absolute size-auto top-0 right-0 -translate-x-1/2 -translate-y-1/2 py-2 px-1 rotate-180">
             <Bookmark
               size={22}
@@ -59,7 +81,7 @@ export function CardGrid({ data }: { data: Task[] }) {
             <CardTitle className="flex items-center">
               <Star
                 className="inline mr-2 text-sidebar-accent"
-                fill={"transparent"}
+                fill={card.status === "completed"? "yellow" : "transparent"}
               />
               {card.title}
             </CardTitle>
@@ -67,9 +89,11 @@ export function CardGrid({ data }: { data: Task[] }) {
           </CardHeader>
           <CardContent>{card.content}</CardContent>
           <CardFooter>
-            <Button variant="outline">More Info</Button>
+            {formatDate(card.timestamps.updatedAt)}
           </CardFooter>
         </Card>
+       </DialogWrapper>
+
       ))}
     </div>
   );

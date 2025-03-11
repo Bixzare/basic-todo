@@ -7,11 +7,10 @@ export default function Home() {
         <div className="text-7xl p-4 drop-shadow-[0_0_10px_hsl(var(--accent)_/_0.6)] text-center">
           Basic Todo
         </div>
-        <div className="border-r-4 border-accent h-40 p-2 hidden md:block"></div>
+        <div className="border-r-4 border-accent h-40 p-2 hidden md:block rounded-sm"></div>
         <div className="hover:bg-gradient p-1 text-foreground">
           <div className="bg-background flex w-full h-full justify-center items-center">
             <Link href="/dashboard">
-              {" "}
               {/*middleware protects routes if unauthed */}
               <button className=" h-full w-full text-4xl hover:scale-105 font-extrabold hover:drop-shadow-[35px_35px_35px_rgba(59,130,246,1)] p-8 rounded-full hover:text-gradient hover">
                 Get Started

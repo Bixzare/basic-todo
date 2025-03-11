@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const TaskSchema = z.object({
+  id: z.string().uuid(),
   title: z.string().min(1),
   description: z.string().min(1),
   content: z.string(),
@@ -23,3 +24,9 @@ export const TaskSchema = z.object({
 
 
 export type Task = z.infer<typeof TaskSchema>
+/*
+npx zod-prisma-types
+
+
+to generate zod schema from prisma
+ */
