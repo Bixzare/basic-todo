@@ -1,5 +1,6 @@
 // utils/sort-utils.ts
 import { CardData } from "@/components/composite-components/card-data";
+import { Task } from "@/types/schema";
 interface SortSettings {
   layoutOrder: string;
   layoutAsc: boolean;
@@ -11,7 +12,7 @@ interface SortSettings {
  * @param settings Settings containing layoutOrder and layoutAsc properties
  * @returns A new sorted array without modifying the original
  */
-export function sortCardData(data: CardData, settings: SortSettings): CardData {
+export function sortCardData(data: Task[], settings: SortSettings): Task[] {
   // Create a copy to avoid mutating the original
 
   console.log("settings in sortLayout",settings);
@@ -25,8 +26,8 @@ export function sortCardData(data: CardData, settings: SortSettings): CardData {
       
       case 'date':
         // Time-based ordering
-        const timeA = new Date(a.timestamp).getTime();
-        const timeB = new Date(b.timestamp).getTime();
+        const timeA = new Date(a.timestamps.createdAt).getTime();
+        const timeB = new Date(b.timestamps.createdAt).getTime();
         return settings.layoutAsc ? timeA - timeB : timeB - timeA;
         
       case 'priority':

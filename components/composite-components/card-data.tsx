@@ -1,4 +1,5 @@
 // card-data.ts
+import { Task } from "@/types/schema";
 export const cardData = [
   {
     title: "Zebra Card",
@@ -33,7 +34,7 @@ export const cardData = [
     content: "Main content of Mango card. More detailed content here.",
     footer: "Created 2022-11-05",
     status: "complete",
-    priority: "3",
+    priority: "0",
     timestamp: "2022-11-05T16:20:00Z"
   },
   {
@@ -65,3 +66,30 @@ export type CardData = {
   priority: string;
   timestamp: string; 
 }[];
+
+
+
+/*
+
+export type Task = { 
+  title: string; 
+  description: string; 
+  content: string; 
+  footer: string; 
+  status: "pending" | "in-progress" | "completed" | "archived"; 
+  priority: "low" | "medium" | "high" | "urgent";
+  dueDate?: string; 
+  reminder?: string | null;
+  completedAt?: string | null;
+  schedule: {
+    startTime?: string; // ISO date-time
+    endTime?: string;   // ISO date-time
+  };
+  timestamps: {
+    createdAt: string;  // ISO date-time
+    updatedAt: string;  // ISO date-time
+  };
+  category?: string;
+}; 
+
+*/

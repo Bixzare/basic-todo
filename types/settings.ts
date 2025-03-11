@@ -5,7 +5,7 @@ export type LayoutAscDesc  = "asc" | "desc"
 
 export interface Settings {
   layoutStyle: LayoutStyle
-  layoutOrder: LayoutOrder 
+  layoutOrder: LayoutOrder | string
   layoutAsc: boolean
 }
 

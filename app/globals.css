@@ -117,7 +117,11 @@
                  0 0 15px hsl(var(--accent) / 0.4);
   }
 }
-
+@layer utilities {
+  *:hover {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
 /*
 @layer base {
   :root {

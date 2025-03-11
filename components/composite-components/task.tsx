@@ -3,15 +3,8 @@ import * as React from "react";
 import { CardGrid } from "./card-grid";
 import { CardData} from "./card-data";
 import { cardData } from "./card-data";
+import { TaskData } from "@/types/zod-data";
 import { CardTable } from "@/components/composite-components/card-table"
-import { LayoutGrid,LayoutList,
-  ArrowUpAZ,
-  ArrowDownAZ,
-  Star,
-  ArrowUpDown
-  
- } from "lucide-react"
-import { useState } from "react";
 import { useSettings } from "../wrappers/settings-provider";
 import { LayoutSettings } from "./layout-settings";
 export function Tasks() {
@@ -21,8 +14,6 @@ export function Tasks() {
   React.useEffect(()=>{
    console.log(settings) 
   },[])
-    const [layout,setLayout] = useState("grid");
-    // will use context to get layout state
 
   return (
     <div className ="w-full flex flex-col">
@@ -36,7 +27,7 @@ export function Tasks() {
 
         {/* Cards Layout */}
       {settings.layoutStyle === "grid" ? (
-          <CardGrid data = {cardData}/>
+          <CardGrid data = {TaskData}/>
       ) : (
         <CardTable />
       )}

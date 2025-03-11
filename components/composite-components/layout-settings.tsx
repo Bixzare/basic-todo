@@ -100,15 +100,22 @@ export function LayoutSettings() {
           <DropdownMenuSeparator />
 
           <DropdownMenuRadioGroup value={settings.layoutOrder} onValueChange={(value:any)=>updateSettings({layoutOrder:value})}>
-            <DropdownMenuRadioItem value="Az">
+            <DropdownMenuRadioItem value="Az" className = {clsx({
+              "bg-accent/30": settings.layoutOrder === "Az"
+            })}>
                {settings.layoutAsc ? (
        <ArrowUpAZ  size = {20}/>  
       ) : (
         <ArrowDownAZ size ={20}/>
       )}
               </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="date"><Clock size = {20} className = "mr-1"/>Status</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="priority">
+            <DropdownMenuRadioItem value="date"
+            className = {clsx({
+              "bg-accent/30": settings.layoutOrder === "date"
+            })}><Clock size = {20} className = "mr-1"/>Status</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="priority" className = {clsx({
+              "bg-accent/30": settings.layoutOrder === "priority"
+            })}>
               <Flag size = {20} className = "inline mr-1"/>Priority
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
