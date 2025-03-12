@@ -52,7 +52,7 @@ export function CardGrid({ data }: { data: Task[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-2">
       {sortedData.map((card, index) => (
-        <DialogWrapper data = {card}>
+        <DialogWrapper data = {card} key = {card.id}>
         <Card className="w-auto hover:scale-105 relative hover:cursor-pointer" key={index} onClick ={() => updateTask(card)}>
           <div className=" absolute size-auto top-0 right-0 -translate-x-1/2 -translate-y-1/2 py-2 px-1 rotate-180">
             <Bookmark

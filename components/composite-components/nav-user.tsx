@@ -31,6 +31,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { ThemeToggle } from "./theme-changer"
+import clsx from "clsx"
 
 export function NavUser({
   user,
@@ -41,19 +42,20 @@ export function NavUser({
     avatar: string
   }
 }) {
-  const { isMobile } = useSidebar()
+  const { open,isMobile } = useSidebar()
 
   return (
     <SidebarMenu>
-      <SidebarMenuItem className = "-ml-0.5">
+      <SidebarMenuItem className={clsx("mb-1", open && "ml-2")}>
         <ThemeToggle/>
       </SidebarMenuItem>
       <SidebarMenuItem>
+        
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className=" data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />

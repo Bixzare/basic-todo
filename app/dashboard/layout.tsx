@@ -7,7 +7,9 @@ export default function DashLayout({ children}: Readonly<{
     return(
        <DashboardLayout>
         <SettingsProvider>
-          {children}
+          <div className='min-w-[320px]'>
+            {children}
+          </div>
         </SettingsProvider>
         </DashboardLayout>
     )
