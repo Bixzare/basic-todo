@@ -1,5 +1,7 @@
+import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="h-screen flex flex-col">
@@ -7,7 +9,7 @@ export default function Home() {
         <div className="text-7xl p-4 drop-shadow-[0_0_10px_hsl(var(--accent)_/_0.6)] text-center">
           Basic Todo
         </div>
-        <div className="border-r-4 border-accent h-40 p-2 hidden md:block rounded-sm"></div>
+        <Separator orientation="vertical" className=" bg-accent h-40  w-2 hidden md:block rounded-sm" />
         <div className="hover:bg-gradient p-1 text-foreground">
           <div className="bg-background flex w-full h-full justify-center items-center">
             <Link href="/dashboard">

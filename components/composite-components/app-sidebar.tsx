@@ -1,19 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react"
+
 import  HomeButton  from "./home-buttom"
 import { NavMain } from "./nav-main"
 import { NavProjects } from "./nav-projects"
@@ -24,9 +12,6 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
 } from "@/components/ui/sidebar"
 
 import sideBarData from "./sidebar-data"

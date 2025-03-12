@@ -1,19 +1,31 @@
 "use client"
 import * as React from "react";
 import { CardGrid } from "./card-grid";
-import { CardData} from "./card-data";
-import { cardData } from "./card-data";
-import { TaskData } from "@/types/zod-data";
+
 import { CardTable } from "@/components/composite-components/card-table"
 import { useSettings } from "../wrappers/settings-provider";
 import { LayoutSettings } from "./layout-settings";
+import { getTasksFromLocalStorage } from "@/lib/localStorageOperations";
+import { Task } from "@/types/schema";
+
 export function Tasks() {
     
   const { settings } = useSettings();
+  const [data, setData] = React.useState<Task[]>([]);
+
 
   React.useEffect(()=>{
+    
+  console.time("Task Load");
+  const data = getTasksFromLocalStorage();
+  setData(data);
+  console.timeEnd("Task Load");
+
    console.log(settings) 
   },[])
+  const cachedData = React.useMemo(() => {
+    return data;
+  }, [data]);
 
   return (
     <div className ="w-full flex flex-col">
@@ -27,7 +39,9 @@ export function Tasks() {
 
         {/* Cards Layout */}
       {settings.layoutStyle === "grid" ? (
-          <CardGrid data = {TaskData}/>
+        <React.Suspense fallback = "Loading...">
+          <CardGrid data = {cachedData}/>
+        </React.Suspense>
       ) : (
         <CardTable />
       )}
