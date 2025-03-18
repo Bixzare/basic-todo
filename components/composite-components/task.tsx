@@ -5,8 +5,8 @@ import { CardGrid } from "./card-grid";
 import { CardTable } from "@/components/composite-components/card-table"
 import { useSettings } from "../wrappers/settings-provider";
 import { LayoutSettings } from "./layout-settings";
-import { getTasksFromLocalStorage } from "@/lib/localStorageOperations";
-import { Task } from "@/types/schema";
+import { getTasksFromLocalStorage, saveTasksToLocalStorage } from "@/lib/localStorageOperations";
+import { Task } from "@/prisma/generated/zod";
 
 export function Tasks() {
     
@@ -36,6 +36,7 @@ export function Tasks() {
             <LayoutSettings/>
         </div>
 
+    
 
         {/* Cards Layout */}
       {settings.layoutStyle === "grid" ? (

@@ -7,24 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Bookmark, Star } from "lucide-react";
-import { Button } from "../ui/button";
-import { CardData } from "./card-data";
+import { Bookmark, Star,Trash2 } from "lucide-react";
 import { useSettings } from "../wrappers/settings-provider";
 import { sortCardData } from "@/lib/sortLayout";
 import clsx from "clsx";
-import { Task } from "@/types/schema";
+import { Task } from "@/prisma/generated/zod";
 import { format } from 'date-fns';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  DialogClose
-} from "@/components/ui/dialog"
+
 import DialogWrapper from "../wrappers/dialog-wrapper";
 
 export function CardGrid({ data }: { data: Task[] }) {
@@ -58,22 +47,22 @@ export function CardGrid({ data }: { data: Task[] }) {
             <Bookmark
               size={22}
               fill = {
-                card.priority === "0"
+                card.priority === 0
                 ? "rgb(209, 213, 219)" // gray-500
-                : card.priority === "1"
+                : card.priority === 1
                 ? "rgb(34, 197, 94)" // green-500
-                : card.priority === "2"
+                : card.priority === 2
                 ? "rgb(234, 179, 8)" // yellow-500
-                : card.priority === "3"
+                : card.priority === 3
                 ? "rgb(239, 68, 68)" // red-500
                 : "none"
 
               }
               className={clsx("", {
-                "text-gray-300": card.priority === "0",
-                "text-green-500": card.priority === "1",
-                "text-yellow-500": card.priority === "2",
-                "text-red-500": card.priority === "3",
+                "text-gray-300": card.priority === 0,
+                "text-green-500": card.priority === 1,
+                "text-yellow-500": card.priority === 2,
+                "text-red-500": card.priority === 3,
               })}
             />
           </div>
@@ -87,9 +76,11 @@ export function CardGrid({ data }: { data: Task[] }) {
             </CardTitle>
             <CardDescription>{card.description}</CardDescription>
           </CardHeader>
-          <CardContent>{card.content}</CardContent>
-          <CardFooter>
-            {formatDate(card.timestamps.updatedAt)}
+          <CardContent>Contnet</CardContent>
+          <CardFooter className = "float-right">
+            {formatDate(card.updatedAt)}
+            {/* <div className=" absolute size-auto bottom-0 right-0 -translate-x-1/2  py-2 px-1 text-gray-400 hover:text-red-400 hover:scale-105 hover:animate-pulse">
+            <Trash2/></div> */}
           </CardFooter>
         </Card>
        </DialogWrapper>

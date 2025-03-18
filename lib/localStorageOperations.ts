@@ -1,4 +1,4 @@
-import { Task, TaskSchema } from "@/types/schema";
+import { Task, TaskSchema } from "@/prisma/generated/zod";
 const TASKS_KEY = "tasks"; // LocalStorage key
 
 /** Save tasks array to localStorage */
@@ -9,6 +9,7 @@ export const saveTasksToLocalStorage = (tasks: Task[]) => {
 /** Retrieve tasks array from localStorage */
 export const getTasksFromLocalStorage = (): Task[] => {
   const storedTasks = localStorage.getItem(TASKS_KEY);
+  
   if (!storedTasks) return [];
 
   try {
@@ -30,7 +31,7 @@ export const addTaskToLocalStorage = (task: Task) => {
 export const updateTaskInLocalStorage = (taskId: string, updatedData: Partial<Task>) => {
   const tasks = getTasksFromLocalStorage().map((task) =>
     task.id === taskId
-      ? { ...task, ...updatedData, timestamps: { ...task.timestamps, updatedAt: new Date().toISOString() } }
+      ? { ...task, ...updatedData, timestamps: { ...task, updatedAt: new Date().toISOString() } }
       : task
   );
   saveTasksToLocalStorage(tasks);

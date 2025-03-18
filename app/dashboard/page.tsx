@@ -17,7 +17,7 @@ const features = {
 
 export default function Page() {
   return (
-    <div className="w-full h-full flex p-2 flex-col items-center gap-4">
+    <div className="w-full h-full flex p-2 flex-col items-center gap-4 fade-in-anim">
       <div className="p-2 space-y-4">
         <h1 className="text-7xl text-center">Welcome to Basic Todo</h1>
         <h3 className="text-3xl text-center">Features</h3>

@@ -117,11 +117,34 @@
                  0 0 15px hsl(var(--accent) / 0.4);
   }
 }
-@layer utilities {
-  *:hover {
-    @apply transition-all duration-300 ease-in-out;
-  }
+::-webkit-scrollbar {
+  width: 0.6rem; /* Default size */
+  height: 7px;
 }
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.4);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box; 
+  transition: all 0.2s ease-in-out;
+  width:1rem;
+}
+
+/* Expanding hover area */
+::-webkit-scrollbar-thumb:hover {
+  width: 1.2rem; /* Enlarge the scrollbar */
+  background: hsl(var(--accent) / 0.6);
+  border: 0; /* Remove the border on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  padding: 10px; /* Extra padding for hover detection */
+}
+
+
+
 /*
 @layer base {
   :root {

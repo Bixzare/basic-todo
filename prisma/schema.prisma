@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator zod {
+  provider       = "zod-prisma-types"
+}
+
+/**
+ * datasource db {
+ * provider = "postgresql"
+ * url      = env("DATABASE_URL")
+ * }
+ */
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Task {
+  id          String     @id @default(uuid())
+  title       String
+  description String
+  status      TaskStatus
+  priority    Int // 0-3 priority scale
+
+  // Schedule fields
+  dueDate   DateTime?
+  reminder  DateTime?
+  startTime DateTime?
+  endTime   DateTime?
+
+  // Recurrence fields
+  isRecurring Boolean              @default(false)
+  frequency   RecurrenceFrequency?
+  interval    Int?
+  endDate     DateTime?
+  daysOfWeek  Json? // Store as JSON array for better querying
+  dayOfMonth  Int?
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+
+  // Relations
+  assignee   User?       @relation(fields: [assigneeId], references: [id])
+  assigneeId String?
+  category   Category?   @relation(fields: [categoryId], references: [id])
+  categoryId String?
+  labels     TaskLabel[]
+
+  // Indexes
+  @@index([assigneeId])
+  @@index([priority])
+  @@index([dueDate])
+}
+
+model User {
+  id       String     @id // Use Supabase auth.users.id as the primary key
+  name     String?
+  email    String     @unique
+  tasks    Task[]
+  Category Category[]
+  Label    Label[]
+
+  // Link with Supabase auth
+  @@map("users") // Maps to the auth.users table in Supabase
+}
+
+model Category {
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+  tasks       Task[]
+
+  // User ownership for categories
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  @@unique([name, userId]) // Prevent duplicate category names per user
+}
+
+model Label {
+  id    String      @id @default(uuid())
+  name  String
+  color String?
+  tasks TaskLabel[]
+
+  // User ownership for labels
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  @@unique([name, userId]) // Prevent duplicate label names per user
+}
+
+model TaskLabel {
+  task    Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  taskId  String
+  label   Label  @relation(fields: [labelId], references: [id], onDelete: Cascade)
+  labelId String
+
+  @@id([taskId, labelId])
+}
+
+enum TaskStatus {
+  pending
+  in_progress
+  completed
+  archived
+}
+
+enum RecurrenceFrequency {
+  daily
+  weekly
+  monthly
+  yearly
+  custom
+}
