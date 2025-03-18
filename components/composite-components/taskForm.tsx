@@ -1,21 +1,43 @@
+"use client"
+import * as React from 'react';
 import {
     DialogClose,
-    DialogContent,
-    DialogDescription,
     DialogFooter,
-    DialogHeader,
-    DialogTitle,
   } from "@/components/ui/dialog";
-  import { Task } from "@prisma/client";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
+import { FieldValues, useForm } from "react-hook-form";
+import { TaskSchema,Task } from "@/prisma/generated/zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from "../ui/input";
+import { useTaskStore } from "@/app/store/taskFormStore";
 
 export function TaskForm({data}:{data?:Task}) {
+  const { taskForm,setTaskForm,resetForm} = useTaskStore();
+  const {register,
+    handleSubmit,
+    formState: { errors, isSubmitting},
+    reset,
+    
+  } = useForm<Task>({
+    resolver: zodResolver(TaskSchema),
+    defaultValues: {
+      // if data use that for edit mode else use zustand form state
+    title:data? data.title : taskForm.title,
+    description:data? data.description : taskForm.description,
+    },
+  });
+
+
+
+  const onSubmit = async (data:FieldValues) => {
+    console.log(data)
+
+    reset()
+  }
     return(
-        <DialogContent className="max-w-[clamp(28rem,100%,50%)] overflow-y-auto max-h-[clamp(20rem,100%,60%)] p-0 ">
-     
+      <>
         <Tabs defaultValue="account" className="w-full bg-black">
         <TabsList className ="grid w-full grid-cols-2">
             <TabsTrigger value="simple">Simple</TabsTrigger>
@@ -23,8 +45,30 @@ export function TaskForm({data}:{data?:Task}) {
         </TabsList>
 
         {/* can conditionally reneder tabs for performance gains */}
+        {/* Todo , use  */}
         <TabsContent value="simple">
-            Simple From
+            <form onSubmit={handleSubmit(onSubmit)} className="">
+
+                <Input
+                {...register("title")}
+                type="text"
+                placeholder="Title"
+                disabled={isSubmitting}
+                onChange={(e) => setTaskForm({ title: e.target.value })}
+                className = ""/>
+
+
+                <Textarea
+                {...register("description")}
+               placeholder="Description"
+                disabled={isSubmitting}
+                className = ""
+                onChange={(e) => setTaskForm({ description: e.target.value })}
+                rows={10}
+                />
+                
+
+              </form>
             </TabsContent>
         <TabsContent value="advanced">
             Advanced
@@ -39,7 +83,7 @@ export function TaskForm({data}:{data?:Task}) {
             </Button>
           </DialogClose>
         </DialogFooter>
-      </DialogContent>
+      </>
     )
 }
 /*
