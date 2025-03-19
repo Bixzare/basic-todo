@@ -1,5 +1,4 @@
 // card-data.ts
-import { Task } from "@/types/schema";
 export const cardData = [
   {
     title: "Zebra Card",

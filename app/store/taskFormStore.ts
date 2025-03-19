@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// *********** Is possible to persist in localstorage using zustand/middleware
 interface Task {
   title: string;
   description: string;

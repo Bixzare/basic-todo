@@ -1,6 +1,6 @@
 "use server"
-import { Tasks } from "@/components/composite-components/task"
-import  TaskActions  from "@/components/composite-components/task-actions"
+import { Tasks } from "@/components/Task/task"
+import  TaskActions  from "@/components/Grid/task-actions"
 export default async function TasksPage(){
     return (
         <div className = "flex items-center size-full flex-col space">

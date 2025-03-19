@@ -30,7 +30,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { ThemeToggle } from "./theme-changer"
+import { ThemeToggle } from "@/components/composite-components/theme-changer"
 import clsx from "clsx"
 
 export function NavUser({

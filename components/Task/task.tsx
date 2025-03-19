@@ -1,10 +1,10 @@
 "use client"
 import * as React from "react";
-import { CardGrid } from "./card-grid";
+import { CardGrid } from "../Grid/task-grid";
 
-import { CardTable } from "@/components/composite-components/card-table"
+import { CardTable } from "@/components/Table/task-table"
 import { useSettings } from "../wrappers/settings-provider";
-import { LayoutSettings } from "./layout-settings";
+import { LayoutSettings } from "../Settings/layout-settings";
 import { getTasksFromLocalStorage, saveTasksToLocalStorage } from "@/lib/localStorageOperations";
 import { Task } from "@/prisma/generated/zod";
 
@@ -21,8 +21,9 @@ export function Tasks() {
   setData(data);
   console.timeEnd("Task Load");
 
-   console.log(settings) 
+  //  console.log(settings) 
   },[])
+  
   const cachedData = React.useMemo(() => {
     return data;
   }, [data]);

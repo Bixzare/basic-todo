@@ -1,5 +1,5 @@
-import { AppSidebar } from '@/components/composite-components/app-sidebar';
-import NavBar from '../composite-components/nav-bar';
+import { AppSidebar } from '@/components/Navigation/Sidebar/app-sidebar';
+import NavBar from '../Navigation/Navbar/nav-bar';
 import { Separator } from "@/components/ui/separator"
 
 import {

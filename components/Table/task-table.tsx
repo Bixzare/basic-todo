@@ -8,7 +8,7 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
-import {cardData} from "./card-data"
+import {cardData} from "../composite-components/card-data"
 
 
 export function CardTable() {

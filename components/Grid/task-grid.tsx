@@ -21,7 +21,7 @@ export function CardGrid({ data }: { data: Task[] }) {
   const { settings } = useSettings();
   //console.log("tasks",settings) // problem not fixed , check claude to work through
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: Date) => {
     return format(new Date(dateString), "H:mm M/dd "); // Example: 03/15 09:30
   };
 

@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator"
-import { SidebarTrigger } from "../ui/sidebar";
+import { SidebarTrigger } from "../../ui/sidebar";
 
 export default function NavBar() {
     return (

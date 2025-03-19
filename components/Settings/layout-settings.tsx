@@ -34,16 +34,15 @@ export function LayoutSettings() {
 
   // any but should be layoutStyle , don't feel like importing the type
 
-  React.useEffect(()=>{
-    console.log("settings comp : ",settings)
-  },[settings])
+  // React.useEffect(()=>{
+  //   console.log("settings comp : ",settings)
+  // },[settings])
 
   const layoutChange = (style: any) => {
     updateSettings({ layoutStyle: style });
   };
 
   const layoutOrderChange = () => {
-    console.log(settings.layoutAsc);
     updateSettings({ layoutAsc: !settings.layoutAsc });
   };
 

@@ -2,9 +2,9 @@
 
 import * as React from "react"
 
-import  HomeButton  from "./home-buttom"
-import { NavMain } from "./nav-main"
-import { NavProjects } from "./nav-projects"
+import  HomeButton  from "./sidebar-home-buttom"
+import { NavMain } from "./sidebar-nav-main"
+import { NavProjects } from "./sidebar-nav-projects"
 import { NavUser } from "./nav-user"
 import {
   Sidebar,
