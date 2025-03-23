@@ -5,7 +5,39 @@
 *{
   box-sizing: border-box;
 }
+:hover*{
+  transition: all 0.2s;
+}
+/* 
+@keyframes fade-in {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 
+@keyframes fade-in-bottom {
+  0%{
+    opacity: 0;
+    transform: translateX(30px)
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fade-in-right {
+  0%{
+    opacity: 0;
+    transform: translateY(30px)
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
 
 @layer base {
   :root {
@@ -94,7 +126,7 @@
 
 @layer utilities {
   .bg-gradient {
-    @apply rounded-md p-1;
+    @apply rounded-full;
     background-image: linear-gradient(
       to right,
       hsl(var(--accent) / 0.4),
@@ -142,6 +174,8 @@
   background: transparent;
   padding: 10px; /* Extra padding for hover detection */
 }
+
+
 
 
 

@@ -1,4 +1,4 @@
-export default function() {
+export default function Settings() {
     return (
         <div>
             Settings

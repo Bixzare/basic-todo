@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -22,23 +21,19 @@ import {
   Clock,
   Flag,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useSettings } from "../wrappers/settings-provider";
 import clsx from "clsx";
+import { LayoutStyle} from "@/types/settings";
 
 export function LayoutSettings() {
-  const [position, setPosition] = React.useState("Az");
   const activeStyles = "bg-accent/60 scale-105";
   const { settings, updateSettings } = useSettings();
-  const layoutStyleChange = settings.layoutStyle === "list" ? "grid" : "list";
-
-  // any but should be layoutStyle , don't feel like importing the type
 
   // React.useEffect(()=>{
   //   console.log("settings comp : ",settings)
   // },[settings])
 
-  const layoutChange = (style: any) => {
+  const layoutChange = (style: LayoutStyle) => {
     updateSettings({ layoutStyle: style });
   };
 
@@ -64,8 +59,6 @@ export function LayoutSettings() {
           <LayoutList /> <span className="ml-1">List</span>
         </Button>
       </div>
-
-  
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -100,24 +93,41 @@ export function LayoutSettings() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
 
-          <DropdownMenuRadioGroup value={settings.layoutOrder} onValueChange={(value:any)=>updateSettings({layoutOrder:value})}>
-            <DropdownMenuRadioItem value="Az" className = {clsx({
-              "bg-accent/30": settings.layoutOrder === "Az"
-            })}>
-               {settings.layoutAsc ? (
-       <ArrowUpAZ  size = {20}/>  
-      ) : (
-        <ArrowDownAZ size ={20}/>
-      )}
-              </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="date"
-            className = {clsx({
-              "bg-accent/30": settings.layoutOrder === "date"
-            })}><Clock size = {20} className = "mr-1"/>Status</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="priority" className = {clsx({
-              "bg-accent/30": settings.layoutOrder === "priority"
-            })}>
-              <Flag size = {20} className = "inline mr-1"/>Priority
+          <DropdownMenuRadioGroup
+            value={settings.layoutOrder}
+            onValueChange={(value:string) =>
+              updateSettings({ layoutOrder: value })
+            }
+          >
+            <DropdownMenuRadioItem
+              value="Az"
+              className={clsx({
+                "bg-accent/30": settings.layoutOrder === "Az",
+              })}
+            >
+              {settings.layoutAsc ? (
+                <ArrowUpAZ size={20} />
+              ) : (
+                <ArrowDownAZ size={20} />
+              )}
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem
+              value="date"
+              className={clsx({
+                "bg-accent/30": settings.layoutOrder === "date",
+              })}
+            >
+              <Clock size={20} className="mr-1" />
+              Status
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem
+              value="priority"
+              className={clsx({
+                "bg-accent/30": settings.layoutOrder === "priority",
+              })}
+            >
+              <Flag size={20} className="inline mr-1" />
+              Priority
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>

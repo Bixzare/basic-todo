@@ -2,8 +2,8 @@ import React from 'react';
 
 const features = {
   taskCrud: {
-    title: "Task Crud",
-    desc: "Create, read, update, and delete tasks"
+    title: "Task Management",
+    desc: "Create customized simple to detailed tasks and manage their attributes"
   },
   schedule: {
     title: "Scheduling",
@@ -15,6 +15,7 @@ const features = {
   }
 };
 
+/* Animation transition keyframes delay durration translateX,Y in keyframes fade-in animation in globals.css */
 export default function Page() {
   return (
     <div className="w-full h-full flex p-2 flex-col items-center gap-4 fade-in-anim">

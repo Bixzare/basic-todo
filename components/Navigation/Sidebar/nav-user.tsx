@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import {
   BadgeCheck,
   Bell,
@@ -7,14 +6,8 @@ import {
   CreditCard,
   LogOut,
   Sparkles,
-  User,
-} from "lucide-react"
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,34 +16,33 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
-import { ThemeToggle } from "@/components/composite-components/theme-changer"
-import clsx from "clsx"
+} from "@/components/ui/sidebar";
+import { ThemeToggle } from "@/components/composite-components/theme-changer";
+import clsx from "clsx";
 
 export function NavUser({
   user,
 }: {
   user: {
-    name: string
-    email: string
-    avatar: string
-  }
+    name: string;
+    email: string;
+    avatar: string;
+  };
 }) {
-  const { open,isMobile } = useSidebar()
+  const { open, isMobile } = useSidebar();
 
   return (
     <SidebarMenu>
       <SidebarMenuItem className={clsx("mb-1", open && "ml-2")}>
-        <ThemeToggle/>
+        <ThemeToggle />
       </SidebarMenuItem>
       <SidebarMenuItem>
-        
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
@@ -61,12 +53,14 @@ export function NavUser({
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">G</AvatarFallback>
               </Avatar>
-  {/* <div className="flex aspect-square items-center justify-center rounded-lg ">
+              {/* <div className="flex aspect-square items-center justify-center rounded-lg ">
                  <User className = "size-5"/>
               </div>               */}
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.name == "Guest"? "" : user.email}</span>
+                <span className="truncate text-xs">
+                  {user.name == "Guest" ? "" : user.email}
+                </span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -85,7 +79,9 @@ export function NavUser({
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.name == "Guest"? "" : user.email}</span>
+                  <span className="truncate text-xs">
+                    {user.name == "Guest" ? "" : user.email}
+                  </span>
                 </div>
               </div>
             </DropdownMenuLabel>
@@ -119,8 +115,6 @@ export function NavUser({
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
-
-      
     </SidebarMenu>
-  )
+  );
 }

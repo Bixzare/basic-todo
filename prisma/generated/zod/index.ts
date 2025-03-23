@@ -115,7 +115,7 @@ export const TaskSchema = z.object({
   categoryId: z.string().nullable(),
 })
 
-export type Task = z.infer<typeof TaskSchema>
+export type Task  = z.infer<typeof TaskSchema>
 
 /////////////////////////////////////////
 // USER SCHEMA

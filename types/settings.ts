@@ -1,6 +1,6 @@
 
 export type LayoutStyle = "grid" | "list"
-export type LayoutOrder = "az" | "priority" | "none"
+export type LayoutOrder = "Az" | "priority" | "date"
 export type LayoutAscDesc  = "asc" | "desc"
 
 export interface Settings {
