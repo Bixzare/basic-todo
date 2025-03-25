@@ -1,5 +1,5 @@
 "use server"
-import { Tasks } from "@/components/Task/task"
+import { Tasks } from "@/components/Task/TaskMain"
 import  TaskActions  from "@/components/Grid/task-actions"
 export default async function TasksPage(){
     return (

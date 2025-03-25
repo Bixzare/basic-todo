@@ -12,7 +12,7 @@ interface TaskState {
   resetForm: () => void;
 }
 
-export const useTaskStore = create<TaskState>((set) => ({
+export const useTaskFormStore = create<TaskState>((set) => ({
   taskForm: { title: "", description: "" }, // ✅ Initial state
   setTaskForm: (data) =>
     set((state) => ({ taskForm: { ...state.taskForm, ...data } })), // ✅ Merge updates

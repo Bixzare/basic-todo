@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Footer(){
     return(
-        <footer className="w-full  bg-gray-500/10 px-10 py-2 flex  items-center justif-evenly gap-5">
+        <footer className="w-full  bg-transparent px-10 py-2 flex  items-center justif-evenly gap-5">
         <div className="flex justify-center items-center gap-1 bg-accent hover:scale-105 rounded-xl px-1.5">
           <Image
             src="/logos/github.svg"

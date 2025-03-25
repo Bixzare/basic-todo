@@ -1,3 +1,90 @@
+import { create } from 'zustand';
+import { Task } from '@/prisma/generated/zod';
+import { getTasksFromLocalStorage,addTaskToLocalStorage,updateTaskInLocalStorage,deleteTaskFromLocalStorage } from '@/lib/localStorageOperations';
+
+// Zustand store definition
+interface TaskStore {
+    tasks: Task[];
+    isLoading: boolean;
+    error: string | null;
+    
+    // Actions
+    fetchTasks: () => void;
+    addTask: (task: Task) => void;
+    updateTask: (taskId: string, updatedData: Partial<Task>) => void;
+    deleteTask: (taskId: string) => void;
+    setStatus: (taskId: string, status: Task["status"]) => void;
+  }
+
+  export const useTaskStore = create<TaskStore>((set, get) => ({
+    tasks: [],
+    isLoading: false,
+    error: null,
+    
+    // Fetch all tasks from localStorage
+    fetchTasks: () => {
+      set({ isLoading: true });
+      try {
+        const tasks = getTasksFromLocalStorage();
+        set({ tasks, isLoading: false, error: null });
+      } catch (error) {
+        set({ isLoading: false, error: 'Failed to fetch tasks' });
+        console.error(error);
+      }
+    },
+    
+    // Add a new task
+    addTask: (task: Task) => {
+      try {
+        addTaskToLocalStorage(task);
+        set(state => ({ 
+          tasks: [...state.tasks, task],
+          error: null
+        }));
+      } catch (error) {
+        set({ error: 'Failed to add task' });
+        console.error(error);
+      }
+    },
+    
+    // Update an existing task
+    updateTask: (taskId: string, updatedData: Partial<Task>) => {
+      try {
+        updateTaskInLocalStorage(taskId, updatedData);
+        set(state => ({
+          tasks: state.tasks.map(task => 
+            task.id === taskId ? { ...task, ...updatedData } : task
+          ),
+          error: null
+        }));
+      } catch (error) {
+        set({ error: 'Failed to update task' });
+        console.error(error);
+      }
+    },
+    
+    // Delete a task
+    deleteTask: (taskId: string) => {
+      try {
+        deleteTaskFromLocalStorage(taskId);
+        set(state => ({
+          tasks: state.tasks.filter(task => task.id !== taskId),
+          error: null
+        }));
+      } catch (error) {
+        set({ error: 'Failed to delete task' });
+        console.error(error);
+      }
+    },
+    
+    // Utility method to toggle task completion
+    setStatus: (taskId: string, status: Task["status"]) => {
+      get().updateTask(taskId, { status });
+    }
+  }));
+
+
+
 // import { create } from 'zustand';
 // import { Task } from '@/prisma/generated/zod';
 

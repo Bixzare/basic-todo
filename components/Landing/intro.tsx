@@ -1,5 +1,4 @@
 import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function IntroPage() {
@@ -14,8 +13,12 @@ export default function IntroPage() {
           orientation="vertical"
           className=" bg-accent h-40  w-2 hidden md:block rounded-sm animate-in fade-in slide-in-from-top-4 delay-1000 duration-500 fill-mode-backwards"
         />
+        <Separator
+        orientation="horizontal"
+        className = "md:hidden bg-accent w-40 h-2 rounded-sm animate-in fade-in slide-in-from-top-4 delay-1000 duration-500 fill-mode-backwards"/>
 
-        <div className=" flex hover:bg-gradient [transition-duration:300] text-foreground text-5xl p-5 rounded-full  animate-in fade-in slide-in-from-right-4 delay-700 duration-500 fill-mode-backwards">
+        <div className="flex hover:bg-accent transition-colors text-foreground text-5xl p-5 rounded-full animate-in fade-in slide-in-from-right-4 [animation-delay:700ms] [animation-duration:700ms] duration-300 fill-mode-backwards"
+        >
           <Link href="/dashboard" className="flex  size-full">Get started</Link>
         </div>
       </div>

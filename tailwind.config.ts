@@ -9,7 +9,12 @@ export default {
   ],
   theme: {
   	extend: {
-		
+		transformStyle: {
+			'3d': 'preserve-3d',
+		  },
+		  perspective: {
+			'1000': '1000px',
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
+  // const [ref, isVisible] = useIntersectionObserver({
+  //   threshold: 0.5,
+  //   rootMargin: "50px",
+  //   freezeOnceVisible: true,
+  // });
+
+  
 type State = {
   isIntersecting: boolean
   entry?: IntersectionObserverEntry

@@ -8,36 +8,11 @@
 :hover*{
   transition: all 0.2s;
 }
-/* 
-@keyframes fade-in {
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-  }
-}
 
-@keyframes fade-in-bottom {
-  0%{
-    opacity: 0;
-    transform: translateX(30px)
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes fade-in-right {
-  0%{
-    opacity: 0;
-    transform: translateY(30px)
-  }
-  100%{
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* body {
+  font-size: clamp(1px, 0.5vw + 1rem, 1px);
 } */
+
 
 @layer base {
   :root {
@@ -126,7 +101,10 @@
 
 @layer utilities {
   .bg-gradient {
-    @apply rounded-full;
+    transition: 0.3s;
+   
+  }
+  .bg-gradient:hover{
     background-image: linear-gradient(
       to right,
       hsl(var(--accent) / 0.4),
